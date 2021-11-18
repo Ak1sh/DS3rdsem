@@ -7,7 +7,7 @@ int num[SIZE];
 
 int isfull()
 {
-    if((rear==front+1) || (rear==SIZE-1 && front ==0))
+    if((front==rear+1) || (rear==SIZE-1 && front ==0))
         return 1;
     else 
         return 0;
