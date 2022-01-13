@@ -116,10 +116,15 @@ void del_at_begin()
         if(head->next==NULL)
         {
             free(head);
+             printf("Deleted\n");
         }
         else
         {
-            
+            struct node*temp=head;
+            head=head->next;
+            head->prev=NULL;
+            free(temp);
+             printf("Deleted\n");
         }
     }
    
@@ -138,10 +143,34 @@ void del_at_end()
     }
     temp->prev->next=NULL;
     free(temp);
+    printf("Deleted\n");
 }
 void del_at_specific_pos()
 {
-    
+    if(head==NULL)
+    {
+        printf("Underflow\n");
+        
+    }
+    else
+    {
+        int t;
+        printf("Enter the position:");
+        scanf("%d",&t);
+        struct node*temp=head;
+        for(int i=1;i<t-1;i++)
+        {
+            temp=temp->next;
+            if(temp==NULL)
+            {
+                printf("Can't Delete\n");
+            }
+        }
+        temp->prev->next=temp->next;
+        temp->next->prev=temp->prev;
+        free(temp);
+         printf("Deleted\n");
+    }
 }
 int main()
 {
