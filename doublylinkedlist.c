@@ -158,7 +158,7 @@ void del_at_specific_pos()
         printf("Enter the position:");
         scanf("%d",&t);
         struct node*temp=head;
-        for(int i=1;i<t-1;i++)
+        for(int i=1;temp!=NULL&&i<t;i++)
         {
             temp=temp->next;
             if(temp==NULL)
@@ -166,10 +166,18 @@ void del_at_specific_pos()
                 printf("Can't Delete\n");
             }
         }
-        temp->prev->next=temp->next;
-        temp->next->prev=temp->prev;
+        if(head==NULL||temp==NULL)
+        return;
+         if (head == temp)
+        head = temp->next;
+
+    if (temp->next != NULL)
+        temp->next->prev = temp->prev;
+ 
+    if (temp->prev != NULL)
+        temp->prev->next = temp->next;
+        
         free(temp);
-         printf("Deleted\n");
     }
 }
 int main()
